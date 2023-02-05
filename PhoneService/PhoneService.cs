@@ -5,71 +5,66 @@ using PhoneShop.Models;
 
 namespace PhoneShop.Service
 {
-    public partial class PhoneService   // здесь лежит вся бизнес логика, модели в папке models должны оставаться нетронутыми,
-                                        // здесь мы пишем все что с моделями делать хотим 
+    public partial class PhoneService                                      
     {
         private int _nextId = 1;
 
-        private readonly string pathToFile = @".\wwwroot\db\phones.json"; // адрес где лежит наш файл в формате json, в будущем это база данных
-        List<Phone> phones= new List<Phone>(); // лист куда мы будем записывать, удалять или показывать наши телефоны
+        private readonly string pathToFile = @".\wwwroot\db\phones.json"; 
+        List<Phone> phones= new List<Phone>(); 
 
         public string GenerateId()
         {
-            //return Guid.NewGuid().ToString(); - один из вариантов генерации рандомного id  
+            //return Guid.NewGuid().ToString(); - an alternative method for generating a random id  
             _nextId++;
-            return $"TEL" + _nextId; // генерация Id в поярдке возрастания
+            return $"TEL" + _nextId; 
         }
         public void AddPhoneToList(Phone phone)
         {
-            DeserializeList();// выгрузим из базы данных свеженький лист со всеми телефонами
-            phone.Id = GenerateId(); // присвоим новенькому телефону id
-            phones.Add(phone); //добавим в этот свеженький лист новый телефон
-            SerializeList(); // загрузим обновленный лист обратно в базу данных
+            DeserializeList();
+            phone.Id = GenerateId(); 
+            phones.Add(phone); 
+            SerializeList(); 
         }
 
         public void RemovePhone(string id)
         {
             DeserializeList();
-            var phoneToRemove = phones.Find(x => x.Id == id);
-            phones.Remove(phoneToRemove);
+            var phone = phones.Find((phone) => phone.Id == id);
+            phones.Remove(phone);
             SerializeList();
         }
 
         public List<Phone> ShowPhones()
         {
-            DeserializeList(); // выгрузим из базы данных свеженький лист со всеми телефонами
-            return phones; // вернем этот лист тому методу, кто его попросит дальше
-        }
-
-        public List<Phone> ShowPhoneById(string id)
-        {
             DeserializeList(); 
-            return phones.Find(x => x.Id == id); ; // вернем этот лист тому методу, кто его попросит дальше
+            return phones; 
         }
 
-        private void SerializeList() // json язык сервера, этот метод позволяет загрузить лист(базу данныых) с телефонами с сервера
+        public Phone ShowPhoneById(string id)
+        {
+            DeserializeList();
+            return phones.Find((phone) => phone.Id == id);
+        }
+
+        private void SerializeList() 
         {
             string json = JsonConvert.SerializeObject(phones); 
             File.WriteAllText(pathToFile, json);
         }
 
-        private void DeserializeList() // а этот метод позволяет загрузить лист(базу данныых) с телефонами обратно на сервер
+        private void DeserializeList() 
         {
             string json = ReadFileToString();
             phones = JsonConvert.DeserializeObject<List<Phone>>(json) ?? new List<Phone>();
         }
 
-        private string ReadFileToString() // этот метод превращает данные с сервера из формата json (которые c# не может считать корретно)
-                                          // в формат строки (а вот это с# может)
+        private string ReadFileToString()                                    
         {
-            if (!File.Exists(pathToFile)) // если такой файл НЕ существует (например, путь "../document/repos/database.json"), погугли File.Exists
+            if (!File.Exists(pathToFile)) 
             {
-                File.WriteAllText(pathToFile, ""); //создание нового файла, запись указанной строки в файл,
-                                                   //а затем закрытие файла(путь pathToFile, содержимое "") гугли  File.WriteAllText
+                File.WriteAllText(pathToFile, "");                                      
             }
-
-            return File.ReadAllText(pathToFile); // если он существует - прочти весь текст в искомом файле и верни его в строковом формате
-                                                // тому методу, кто его попросит дальше 
+            return File.ReadAllText(pathToFile);                                       
         }
 
     }
