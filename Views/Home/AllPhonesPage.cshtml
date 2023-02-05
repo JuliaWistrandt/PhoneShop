@@ -1,0 +1,30 @@
+﻿@model List<Phone>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Weight</th>
+        <th>Price</th>
+        <th>Year</th>
+        <th>Memory GB</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var phone in Model)
+        {
+            <tr>
+                <td>@phone.Id</td>
+                <td>@phone.Name</td>
+                <td>@phone.Weight</td>
+                <td>@phone.Price</td>
+                <td>@phone.Year</td>
+                <td>@phone.MemoryGB</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

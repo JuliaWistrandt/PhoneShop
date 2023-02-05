@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Up99i7ghMYsbWyx3muolCTN5aT5RRNLt5z6pgGGCTZsIWu5LVjNF2GEIl/TZusvLVsxV0lTNQwj+afanvy8seQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Валерия\\source\\repos\\PhoneShop-master\\PhoneShop.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Валерия\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
