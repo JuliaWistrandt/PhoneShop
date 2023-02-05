@@ -8,13 +8,15 @@ namespace PhoneShop.Service
     public partial class PhoneService   // здесь лежит вся бизнес логика, модели в папке models должны оставаться нетронутыми,
                                         // здесь мы пишем все что с моделями делать хотим 
     {
+        private int _nextId = 1;
+
         private readonly string pathToFile = @".\wwwroot\db\phones.json"; // адрес где лежит наш файл в формате json, в будущем это база данных
         List<Phone> phones= new List<Phone>(); // лист куда мы будем записывать, удалять или показывать наши телефоны
 
-        public string GenerateId() // генерируем рандомное id  
+        public int GenerateId() 
         {
-            return Guid.NewGuid().ToString();
-        
+            //return Guid.NewGuid().ToString(); - один из вариантов генерации рандомного id  
+            return _nextId++; // генерация Id в поярдке возрастания
         }
         public void AddPhoneToList(Phone phone)
         {
@@ -24,7 +26,7 @@ namespace PhoneShop.Service
             SerializeList(); // загрузим обновленный лист обратно в базу данных
         }
 
-        public void DeletePhoneById(string id)
+        public void DeletePhoneById(int id)
         {
             DeserializeList();
             var phone = phones.FirstOrDefault(x => x.Id == id);
