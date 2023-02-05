@@ -30,7 +30,7 @@ namespace PhoneShop.Service
         public void RemovePhone(string id)
         {
             DeserializeList();
-            Phone phoneToRemove = phones.Find(x => x.Id == id);
+            var phoneToRemove = phones.Find(x => x.Id == id);
             phones.Remove(phoneToRemove);
             SerializeList();
         }
@@ -39,6 +39,12 @@ namespace PhoneShop.Service
         {
             DeserializeList(); // выгрузим из базы данных свеженький лист со всеми телефонами
             return phones; // вернем этот лист тому методу, кто его попросит дальше
+        }
+
+        public List<Phone> ShowPhoneById(string id)
+        {
+            DeserializeList(); 
+            return phones.Find(x => x.Id == id); ; // вернем этот лист тому методу, кто его попросит дальше
         }
 
         private void SerializeList() // json язык сервера, этот метод позволяет загрузить лист(базу данныых) с телефонами с сервера

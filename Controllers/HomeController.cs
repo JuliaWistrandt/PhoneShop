@@ -41,18 +41,35 @@ namespace PhoneShop.Controllers
             return View();
         }
 
-        [HttpPost] 
-        public IActionResult DeletePhone(string id)
+        [HttpGet]
+        public IActionResult SearchPhone()
         {
-            if (id != null)
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult SearchPhone(string id)
+        {
+            var temp = _service.ShowPhoneById(id);
+            if (temp == null)
             {
-                _service.RemovePhone(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("NotFoundPage");
             }
             else
             {
-                return RedirectToAction("NotFoundPage");
-            }  
+
+                return View("PhoneDitails" + temp);
+            }
+            
+        }
+
+        [HttpPost] 
+        public IActionResult DeletePhone(string id)
+        {
+            _service.RemovePhone(id);
+            return RedirectToAction("Index");
+
+
         }
 
 
