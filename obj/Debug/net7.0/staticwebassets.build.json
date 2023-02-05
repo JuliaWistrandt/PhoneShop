@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1zSc0LfdPvRBITktLW4fPFbgJc8eBU7Nu+p/bJJJ4Q4=",
+  "Hash": "hmtkWMT+0TR07X/nu/HuhVtX0U8DEbbhDoBfnEdFdqw=",
   "Source": "PhoneShop",
   "BasePath": "_content/PhoneShop",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Валерия\\source\\repos\\PhoneShop-master\\wwwroot\\css\\styles.css",
+      "SourceId": "PhoneShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Валерия\\source\\repos\\PhoneShop-master\\wwwroot\\",
+      "BasePath": "_content/PhoneShop",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
       "Identity": "C:\\Users\\Валерия\\source\\repos\\PhoneShop-master\\wwwroot\\db\\phones.json",

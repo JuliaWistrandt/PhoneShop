@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\Валерия\\source\\repos\\PhoneShop-master\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
       "Id": "C:\\Users\\Валерия\\source\\repos\\PhoneShop-master\\wwwroot\\db\\phones.json",
       "PackagePath": "staticwebassets\\db\\phones.json"
     },

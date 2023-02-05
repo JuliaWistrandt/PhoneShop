@@ -44,8 +44,15 @@ namespace PhoneShop.Controllers
         [HttpPost] 
         public IActionResult DeletePhone(string id)
         {
-            _service.DeletePhoneById(id);
-             return RedirectToAction("Index");      
+            if (id != null)
+            {
+                _service.RemovePhone(id);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("NotFoundPage");
+            }  
         }
 
 
@@ -54,12 +61,20 @@ namespace PhoneShop.Controllers
             
             return View(_service.ShowPhones()); // _service описывает нашу бизнес-логику, внутри которой лежит метод ShowPhones см отдельный файл с объяснением кода
         }
-        
+
+        public IActionResult NotFoundPage()
+        {
+
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)] // это по умолчанию тут было, сообщение об ошибке
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

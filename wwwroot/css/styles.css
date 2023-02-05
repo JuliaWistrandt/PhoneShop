@@ -1,0 +1,17 @@
+
+dl {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+dt {
+    font-weight: bold;
+    flex-basis: 25%;
+    margin-right: 20px;
+}
+
+dd {
+    flex-basis: 75%;
+    margin: 0;
+}

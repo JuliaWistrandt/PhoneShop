@@ -13,10 +13,11 @@ namespace PhoneShop.Service
         private readonly string pathToFile = @".\wwwroot\db\phones.json"; // адрес где лежит наш файл в формате json, в будущем это база данных
         List<Phone> phones= new List<Phone>(); // лист куда мы будем записывать, удалять или показывать наши телефоны
 
-        public int GenerateId() 
+        public string GenerateId()
         {
             //return Guid.NewGuid().ToString(); - один из вариантов генерации рандомного id  
-            return _nextId++; // генерация Id в поярдке возрастания
+            _nextId++;
+            return $"TEL" + _nextId; // генерация Id в поярдке возрастания
         }
         public void AddPhoneToList(Phone phone)
         {
@@ -26,11 +27,11 @@ namespace PhoneShop.Service
             SerializeList(); // загрузим обновленный лист обратно в базу данных
         }
 
-        public void DeletePhoneById(int id)
+        public void RemovePhone(string id)
         {
             DeserializeList();
-            var phone = phones.FirstOrDefault(x => x.Id == id);
-            phones.Remove(phone);
+            Phone phoneToRemove = phones.Find(x => x.Id == id);
+            phones.Remove(phoneToRemove);
             SerializeList();
         }
 
@@ -62,7 +63,7 @@ namespace PhoneShop.Service
             }
 
             return File.ReadAllText(pathToFile); // если он существует - прочти весь текст в искомом файле и верни его в строковом формате
-                                                 // тому методу, кто его попросит дальше 
+                                                // тому методу, кто его попросит дальше 
         }
 
     }
