@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PhoneShop.Models;
+using System.Numerics;
 
 
 namespace PhoneShop.Service
@@ -15,8 +16,11 @@ namespace PhoneShop.Service
         public string GenerateId()
         {
             //return Guid.NewGuid().ToString(); - an alternative method for generating a random id  
-            _nextId++;
-            return $"TEL" + _nextId; 
+            DeserializeList();
+            var MaxId = phones.Max(p => p.Id);
+            _nextId = Int32.Parse(MaxId) + 1;
+            SerializeList();
+            return _nextId.ToString(); 
         }
         public void AddPhoneToList(Phone phone)
         {

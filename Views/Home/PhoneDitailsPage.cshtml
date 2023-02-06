@@ -35,7 +35,7 @@
             </tbody>
         </table>
         <p class="card-text">WARNING: Any items emptied from the trash are no longer available.</p>
-        <a href="#" class="btn btn-primary">Remove</a>
+        <a type="button" class="btn btn-danger" asp-controller="Home" asp-action="DeletePhone" asp-route-Id="@Model.Id">Remove</a>
     </div>
 </div>
 

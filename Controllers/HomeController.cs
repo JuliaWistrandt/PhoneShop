@@ -76,23 +76,20 @@ namespace PhoneShop.Controllers
         }
 
 
+        
+        public IActionResult DeletePhone(string id)
+        {
+            _service.RemovePhone(id);
+            return RedirectToAction("Index");
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)] 
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //public IActionResult DeletePhonePage()  
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost] 
-        //public IActionResult DeletePhone(string id)
-        //{
-        //    _service.RemovePhone(id);
-        //    return RedirectToAction("Index");
-        //}
 
     }
 }
