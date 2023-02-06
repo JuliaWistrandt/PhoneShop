@@ -1,18 +1,43 @@
 ﻿@model Phone
 
-<h2> Phone Ditails</h2>
 
-<dl>
-    <dt>ID</dt>
-    <dt>@Model.Id</dt>
-    <dt>Model</dt>
-    <dt>@Model.Name</dt>
-    <dt>Weight in gramm</dt>
-    <dt>@Model.Weight</dt>
-    <dt>Price in EUR</dt>
-    <dt>@Model.Price</dt>
-    <dt>Year</dt>
-    <dt>@Model.Year</dt>
-    <dt>Memory in GB</dt>
-    <dt>@Model.MemoryGB</dt>
-</dl>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">ID</th>
+                    <td>@Model.Id</td>
+                </tr>
+                <tr>
+                    <th scope="row">Price</th>
+                    <td>@Model.Price</td>
+                </tr>
+                <tr>
+                    <th scope="row">Weight</th>
+                    <td colspan="2">@Model.Weight</td>
+                </tr>
+                <tr>
+                    <th scope="row">Year</th>
+                    <td>@Model.Year</td>
+                </tr>
+                <tr>
+                    <th scope="row">Memotu GB</th>
+                    <td>@Model.MemoryGB</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="card-text">WARNING: Any items emptied from the trash are no longer available.</p>
+        <a href="#" class="btn btn-primary">Remove</a>
+    </div>
+</div>
+
+
+
