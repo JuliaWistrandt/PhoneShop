@@ -43,17 +43,17 @@ namespace PhoneShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult SearchPhone(string id)
+        public IActionResult SearchPhone([FromForm] string id)
         {
             var temp = _service.ShowPhoneById(id);
             if (temp == null)
             {
-                return RedirectToAction("NotFoundPage");
+                return View("NotFoundPage");
             }
             else
             {
 
-                return RedirectToAction("PhoneDitailsPage" + temp);
+                return View("PhoneDitailsPage", temp);
             }
 
         }

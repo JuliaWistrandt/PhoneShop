@@ -7,7 +7,7 @@ namespace PhoneShop.Service
 {
     public partial class PhoneService                                      
     {
-        private int _nextId = 1;
+        private int _nextId;
 
         private readonly string pathToFile = @".\wwwroot\db\phones.json"; 
         List<Phone> phones= new List<Phone>(); 

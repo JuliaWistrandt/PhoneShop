@@ -10,7 +10,7 @@ namespace PhoneShop
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddTransient<PhoneService>();
+            builder.Services.AddScoped<PhoneService>();
 
             var app = builder.Build();
 
